@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DataBindingExample</string>
+    <string name="article_title">Article Title</string>
+    <string name="article_description">This is the description for the article</string>
 </resources>
