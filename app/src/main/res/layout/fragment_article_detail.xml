@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="article"
-            type="com.nikhiljain.databindingexample.models.Article" />
+            name="detailViewModel"
+            type="com.nikhiljain.databindingexample.view.article_detail.ArticleDetailViewModel" />
 
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{article.title}"
+            android:text="@={detailViewModel.article.title}"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -38,7 +38,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@{article.description}"
+            android:text="@={detailViewModel.article.description}"
             android:textAlignment="center"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"

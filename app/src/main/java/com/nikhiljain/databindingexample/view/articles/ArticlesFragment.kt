@@ -51,8 +51,7 @@ class ArticlesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         articlesViewModel = ViewModelProvider(this)
             .get(ArticlesViewModel::class.java)
-        binding.recyclerViewArticles.adapter =
-            articlesAdapter
+        binding.recyclerViewArticles.adapter = articlesAdapter
         articlesViewModel.articles.observe(viewLifecycleOwner, Observer {
             it?.let { articlesAdapter.updateArticles(it) }
         })

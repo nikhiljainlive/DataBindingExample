@@ -33,11 +33,11 @@ class ArticleDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         detailViewModel = ViewModelProvider(this)
             .get(ArticleDetailViewModel::class.java)
+        binding.detailViewModel = detailViewModel
 
-        // setting the article in view-model to handle configuration change
-        // and then setting it to view
-        detailViewModel.article = arguments?.get(KEY_ARTICLE) as? Article
-        binding.article = detailViewModel.article
+        arguments?.getParcelable<Article>(KEY_ARTICLE)?.let {
+            detailViewModel.setArticle(it)
+        }
     }
 
     companion object {
