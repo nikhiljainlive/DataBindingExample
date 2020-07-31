@@ -13,6 +13,7 @@ import com.nikhiljain.databindingexample.models.Article
 
 class ArticleDetailFragment : Fragment() {
     private lateinit var binding: FragmentArticleDetailBinding
+    private lateinit var viewModelFactory : ArticleDetailViewModelFactory
     private lateinit var detailViewModel: ArticleDetailViewModel
 
     override fun onCreateView(
@@ -26,18 +27,12 @@ class ArticleDetailFragment : Fragment() {
             container,
             false
         )
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        detailViewModel = ViewModelProvider(this)
+        viewModelFactory =
+            ArticleDetailViewModelFactory(arguments?.getParcelable(KEY_ARTICLE))
+        detailViewModel = ViewModelProvider(this, viewModelFactory)
             .get(ArticleDetailViewModel::class.java)
         binding.detailViewModel = detailViewModel
-
-        arguments?.getParcelable<Article>(KEY_ARTICLE)?.let {
-            detailViewModel.setArticle(it)
-        }
+        return binding.root
     }
 
     companion object {
